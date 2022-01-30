@@ -157,6 +157,204 @@
           <div id="js-content" class="content-ll">
             
 
+<article id="post-动态链接中PLT与GOT工作流程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class=" article-header">
+  
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/05/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E4%B8%ADPLT%E4%B8%8EGOT%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/">动态链接中PLT与GOT工作流程</a>
+    </h1>
+  
+
+  <!--  -->
+  
+  <a href="/2020/11/05/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E4%B8%ADPLT%E4%B8%8EGOT%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2020-11-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-05</time>
+</a>
+  <!-- 需要添加的位置 -->
+  <!-- 开始添加字数统计-->
+  
+  <!-- 添加完成 -->
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="动态链接中PLT与GOT工作流程"><a href="#动态链接中PLT与GOT工作流程" class="headerlink" title="动态链接中PLT与GOT工作流程"></a>动态链接中PLT与GOT工作流程</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在之前的《静态链接与动态链接》中，我们介绍了这两者的优缺点：动态链接的缺点主要就是动态链接的程序执行速度会比静态链接的程度略慢一些。</p>
+<p>原因就在于动态链接的可执行程序对于模块间的变量以及函数访问，都需要通过GOT表进行间接跳转。如此一来，程序的运行速度肯定会有所减慢。</p>
+<p>另一个很重要的原因就是动态链接的链接工作是在程序运行时来完成的，即程序开始执行前动态链接器会去寻找并且装载程序所需的动态共享对象，然后完成一系列的符号重定位操作。这部分动作肯定会减慢程序的启动速度</p>
+<p>针对这种情况，一种称为“**延迟绑定(Lazy Binding)**”的解决办法出现了。延迟绑定的核心思想就是在程序启动时并不完成所有模块间函数调用的符号重定位操作，只有当目标程序需要调用某个模块外函数时才进行地址绑定(即符号查找、符号重定位)。</p>
+<p>要实现以上的目标，ELF文件采用了**PLT(PProcedure Linkage Table)**的结构，这种结构内包含了一些很精妙的指令序列，这也是本文接下来所要讲解的内容。</p>
+    
+    
+
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态链接</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PLT</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">延迟绑定</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">知识图谱</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2020/11/05/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E4%B8%ADPLT%E4%B8%8EGOT%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+<article id="post-静态链接与动态链接" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class=" article-header">
+  
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/04/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E4%B8%8E%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/">静态链接与动态链接</a>
+    </h1>
+  
+
+  <!--  -->
+  
+  <a href="/2020/11/04/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E4%B8%8E%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/" class="archive-article-date">
+  	<time datetime="2020-11-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-04</time>
+</a>
+  <!-- 需要添加的位置 -->
+  <!-- 开始添加字数统计-->
+  
+  <!-- 添加完成 -->
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="静态链接与动态链接"><a href="#静态链接与动态链接" class="headerlink" title="静态链接与动态链接"></a>静态链接与动态链接</h1><h2 id="自顶向下的思考逻辑"><a href="#自顶向下的思考逻辑" class="headerlink" title="自顶向下的思考逻辑"></a>自顶向下的思考逻辑</h2><p>通过之前的《ELF文件格式解析》，我们对ELF目标文件有了大致的印象和了解。那么接下来的问题就是：<strong>我们如何将编译得到的多个目标文件链接形成一个可执行文件？</strong></p>
+<p>因为可执行文件中的每一条指令都需要一个明确的地址，因此链接的任务就是为可执行文件确定这些地址。从这个角度出发，我们不难发现链接器的主要任务就是以下三者：</p>
+<ol>
+<li>为多个目标文件分配地址空间</li>
+<li>明确每个符号的定义以及引用</li>
+<li>修改需要更新地址的指令</li>
+</ol>
+<p>以上三个步骤其实就对应了链接过程中的<strong>地址空间分配</strong>、<strong>符号解析</strong>与<strong>符号重定位</strong>。这其中的符号解析与符号重定位通常都是在一起完成的，因此这套处理逻辑也被称为**两步链接(Two-pass Linking)**。</p>
+<p>根据为目标文件分配地址空间方式的不同，我们可以将链接方式分为静态链接和动态链接。接下来就仔细讲解这两者的相关细节。</p>
+    
+    
+
+    
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态链接</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">知识图谱</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">静态链接</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2020/11/04/%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E4%B8%8E%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
 <article id="post-ELF文件格式解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -356,6 +554,26 @@
             
             <li class="article-tag-list-item">
               <a href="javascript:void(0)" class="js-tag color3">可执行文件格式</a>
+            </li>
+            
+            <li class="article-tag-list-item">
+              <a href="javascript:void(0)" class="js-tag color5">动态链接</a>
+            </li>
+            
+            <li class="article-tag-list-item">
+              <a href="javascript:void(0)" class="js-tag color4">PLT</a>
+            </li>
+            
+            <li class="article-tag-list-item">
+              <a href="javascript:void(0)" class="js-tag color5">延迟绑定</a>
+            </li>
+            
+            <li class="article-tag-list-item">
+              <a href="javascript:void(0)" class="js-tag color5">知识图谱</a>
+            </li>
+            
+            <li class="article-tag-list-item">
+              <a href="javascript:void(0)" class="js-tag color5">静态链接</a>
             </li>
             
             <div class="clearfix"></div>
